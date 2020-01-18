@@ -1,4 +1,4 @@
-# Tor web
+# Tor Web Server
 
 Build your web service on tor.
 
