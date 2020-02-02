@@ -1,17 +1,21 @@
 version: "3"
 services:
   nginx:
-    build: .
+    image: nginx:alpine
     volumes:
       - ./app:/app
       - ./site.conf:/etc/nginx/conf.d/default.conf
       - ./nginx.conf:/etc/nginx/nginx.conf
-      - ./torrc:/etc/tor/torrc
-      - ./tor:/tor
       - ./log:/var/log/nginx
     restart: always
   php:
     image: php:fpm-alpine
     volumes:
       - ./app:/app
+    restart: always
+  tor:
+    image: duckll/tor
+    volumes:
+      - ./torrc:/etc/tor/torrc
+      - ./tor:/tor
     restart: always
